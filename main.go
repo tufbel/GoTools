@@ -1,9 +1,9 @@
 package main
 
 import (
-	"GoTools/reflect_eg"
+	_ "GoTools/leet"
 )
 
 func main() {
-	reflect_eg.TypeAsserRun()
+	println("Hello, world!")
 }
