@@ -35,9 +35,9 @@ func OnceRCUGetState(url string, count int, failureNum *int64, wg *sync.WaitGrou
 	req.SetRequestURI(url)
 	req.Header.SetMethod("GET")
 	req.Header.SetContentType("application/json")
-	req.SetTimeout(1 * time.Second)
+
 	startTime = time.Now()
-	if err_ := fasthttp.Do(req, resp); err_ != nil || resp.StatusCode() != 200 {
+	if err_ := fasthttp.DoTimeout(req, resp, time.Second); err_ != nil || resp.StatusCode() != 200 {
 		endTime = time.Now()
 		atomic.AddInt64(failureNum, 1)
 		fmt.Printf(
