@@ -9,6 +9,8 @@ import (
 	"GoTools/tools/myLog"
 	"context"
 	"fmt"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type HomeServer struct {
@@ -22,5 +24,8 @@ func (s *HomeServer) SayHello(ctx context.Context, in *gp.HelloRequest) (*gp.Hel
 
 func (s *HomeServer) SayBye(ctx context.Context, in *gp.ByeRequest) (*gp.ByeReply, error) {
 	myLog.Logger.Debug(fmt.Sprintf("SayBye received: %v", in.GetName()))
-	return &gp.ByeReply{Message: "Bye " + in.GetName()}, nil
+	//return &gp.ByeReply{Message: "Bye " + in.GetName()}, nil
+	return nil, status.Errorf(codes.Canceled, "Deliberate cancellation")
 }
+
+//func (s *HomeServer) mustEmbedUnimplementedHomeServer() {}

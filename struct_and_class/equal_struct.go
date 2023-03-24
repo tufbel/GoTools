@@ -26,7 +26,7 @@ type Address struct {
 	Street string
 }
 
-func init() {
+func equal_struct_init() {
 	p1 := Person{Name: "Alice", Age: 30, Gender: "Female"}
 	p2 := Person{Name: "Alice", Age: 30, Gender: "Female"}
 	p3 := Person{Name: "Bob", Age: 25, Gender: "Male"}
